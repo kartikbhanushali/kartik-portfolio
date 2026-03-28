@@ -65,8 +65,27 @@ export default function Experience() {
             className="py-20 md:py-32 bg-dark-400 relative overflow-hidden"
         >
             {/* Background decorations */}
-            <div className="absolute top-0 left-1/4 w-72 h-72 bg-accent-cyan/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl" />
+            <div className="absolute top-0 left-1/4 w-72 h-72 bg-accent-gold/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-emerald/5 rounded-full blur-3xl" />
+
+            {/* Floating Greek symbols */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {['α', 'γ', 'ρ', 'θ', 'ν'].map((sym, i) => (
+                    <span
+                        key={i}
+                        className="absolute text-accent-gold/[0.05] font-mono select-none"
+                        style={{
+                            fontSize: `${30 + i * 10}px`,
+                            top: `${10 + i * 20}%`,
+                            left: `${i % 2 === 0 ? 2 + i * 5 : 85 - i * 5}%`,
+                            animation: `float-symbol ${9 + i * 1.3}s ease-in-out infinite`,
+                            animationDelay: `${i * 0.9}s`,
+                        }}
+                    >
+                        {sym}
+                    </span>
+                ))}
+            </div>
 
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
@@ -78,9 +97,9 @@ export default function Experience() {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-4">
-                        Work <span className="text-accent-cyan">Experience</span>
+                        Work <span className="text-accent-gold">Experience</span>
                     </h2>
-                    <div className="w-20 h-1 bg-accent-cyan mx-auto" />
+                    <div className="w-20 h-1 bg-accent-gold mx-auto" />
                 </motion.div>
 
                 {/* Timeline */}
@@ -88,7 +107,7 @@ export default function Experience() {
                     {/* Timeline Line */}
                     <div
                         ref={timelineRef}
-                        className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-cyan via-accent-purple to-accent-pink transform md:-translate-x-1/2"
+                        className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-gold via-accent-emerald to-accent-slate transform md:-translate-x-1/2"
                     />
 
                     {/* Experience Cards */}
@@ -101,8 +120,8 @@ export default function Experience() {
                                     }`}
                             >
                                 {/* Timeline dot */}
-                                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-accent-cyan rounded-full transform -translate-x-1/2 border-4 border-dark-400 z-10">
-                                    <div className="absolute inset-0 bg-accent-cyan rounded-full animate-ping opacity-20" />
+                                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-accent-gold rounded-full transform -translate-x-1/2 border-4 border-dark-400 z-10">
+                                    <div className="absolute inset-0 bg-accent-gold rounded-full animate-ping opacity-20" />
                                 </div>
 
                                 {/* Card */}
@@ -111,32 +130,32 @@ export default function Experience() {
                                         }`}
                                 >
                                     <motion.div
-                                        className="p-6 bg-dark-300/50 rounded-2xl border border-dark-200/20 hover:border-accent-cyan/30 transition-all duration-300 group"
+                                        className="p-6 bg-dark-300/50 rounded-2xl border border-dark-200/20 hover:border-accent-gold/30 transition-all duration-300 group"
                                         whileHover={{ y: -5 }}
                                     >
                                         {/* Header */}
                                         <div className="flex items-start justify-between mb-4">
                                             <div>
-                                                <h3 className="text-xl font-display font-bold text-white group-hover:text-accent-cyan transition-colors">
+                                                <h3 className="text-xl font-display font-bold text-white group-hover:text-accent-gold transition-colors">
                                                     {exp.title}
                                                 </h3>
-                                                <p className="text-accent-purple font-medium">
+                                                <p className="text-accent-emerald font-medium">
                                                     {exp.company}
                                                 </p>
                                             </div>
-                                            <div className="p-2 bg-accent-cyan/10 rounded-lg">
-                                                <FaBriefcase className="text-accent-cyan" />
+                                            <div className="p-2 bg-accent-gold/10 rounded-lg">
+                                                <FaBriefcase className="text-accent-gold" />
                                             </div>
                                         </div>
 
                                         {/* Meta info */}
                                         <div className="flex flex-wrap gap-4 text-sm text-gray-400 mb-4">
                                             <span className="flex items-center gap-1">
-                                                <FaMapMarkerAlt className="text-accent-cyan" />
+                                                <FaMapMarkerAlt className="text-accent-gold" />
                                                 {exp.location}
                                             </span>
                                             <span className="flex items-center gap-1">
-                                                <FaCalendarAlt className="text-accent-cyan" />
+                                                <FaCalendarAlt className="text-accent-gold" />
                                                 {exp.period}
                                             </span>
                                         </div>
@@ -152,7 +171,7 @@ export default function Experience() {
                                                     viewport={{ once: true }}
                                                     transition={{ delay: i * 0.1 }}
                                                 >
-                                                    <span className="w-1.5 h-1.5 mt-2 bg-accent-cyan rounded-full flex-shrink-0" />
+                                                    <span className="w-1.5 h-1.5 mt-2 bg-accent-gold rounded-full flex-shrink-0" />
                                                     {highlight}
                                                 </motion.li>
                                             ))}

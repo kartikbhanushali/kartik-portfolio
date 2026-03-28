@@ -1,131 +1,172 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial } from '@react-three/drei';
+import * as THREE from 'three';
 
-function FloatingGeometry({ reducedMotion }) {
-    const meshRef = useRef();
-    const wireframeRef = useRef();
+/* ═══════════════════════════════════════
+   CHICAGO SKYLINE — iconic silhouette
+   with Willis Tower, Hancock, Aon, etc.
+   ═══════════════════════════════════════ */
+function ChicagoSkyline({ reducedMotion }) {
+    const groupRef = useRef();
 
-    useFrame(({ clock, mouse }) => {
-        if (reducedMotion) return;
+    // Iconic Chicago buildings – hand-crafted shapes
+    const buildings = useMemo(() => [
+        // Willis (Sears) Tower ← tallest, stepped setbacks
+        { x: -0.5, w: 0.7, h: 3.8, d: 0.7, tier: [{ h: 3.0, w: 0.7 }, { h: 3.4, w: 0.5 }, { h: 3.8, w: 0.35 }] },
+        // Trump Tower — tapered
+        { x: 1.2, w: 0.5, h: 3.2, d: 0.5, tier: [{ h: 2.0, w: 0.55 }, { h: 2.8, w: 0.4 }, { h: 3.2, w: 0.25 }] },
+        // Aon Center — simple tall box
+        { x: 2.8, w: 0.55, h: 3.0, d: 0.55, tier: null },
+        // John Hancock — tapered with antenna lines
+        { x: -2.2, w: 0.6, h: 3.4, d: 0.6, tier: null, antenna: 0.6 },
+        // Two Prudential Plaza — spire
+        { x: 3.8, w: 0.45, h: 2.4, d: 0.45, tier: null, spire: 0.5 },
+        // Mid-rises filling the skyline
+        { x: -3.5, w: 0.4, h: 1.6, d: 0.4, tier: null },
+        { x: -4.2, w: 0.5, h: 1.2, d: 0.4, tier: null },
+        { x: -1.5, w: 0.35, h: 2.0, d: 0.35, tier: null },
+        { x: 0.5, w: 0.4, h: 2.2, d: 0.4, tier: null },
+        { x: 1.8, w: 0.35, h: 1.8, d: 0.35, tier: null },
+        { x: 2.2, w: 0.3, h: 1.4, d: 0.3, tier: null },
+        { x: 3.2, w: 0.35, h: 1.6, d: 0.35, tier: null },
+        { x: 4.5, w: 0.4, h: 1.0, d: 0.4, tier: null },
+        { x: -5.0, w: 0.45, h: 0.8, d: 0.35, tier: null },
+        { x: 5.2, w: 0.35, h: 0.7, d: 0.3, tier: null },
+        { x: -3.0, w: 0.3, h: 1.1, d: 0.3, tier: null },
+        { x: 4.0, w: 0.25, h: 1.3, d: 0.25, tier: null },
+        // Far background fill
+        { x: -5.8, w: 0.5, h: 0.5, d: 0.3, tier: null },
+        { x: 5.8, w: 0.4, h: 0.5, d: 0.3, tier: null },
+        { x: -6.3, w: 0.3, h: 0.35, d: 0.25, tier: null },
+        { x: 6.3, w: 0.3, h: 0.3, d: 0.25, tier: null },
+    ], []);
 
+    useFrame(({ clock }) => {
+        if (reducedMotion || !groupRef.current) return;
         const t = clock.getElapsedTime();
-
-        if (meshRef.current) {
-            meshRef.current.rotation.x = Math.sin(t * 0.3) * 0.2;
-            meshRef.current.rotation.y = t * 0.15;
-            meshRef.current.rotation.z = Math.cos(t * 0.2) * 0.1;
-
-            // Subtle mouse following
-            meshRef.current.position.x = mouse.x * 0.3;
-            meshRef.current.position.y = mouse.y * 0.3;
-        }
-
-        if (wireframeRef.current) {
-            wireframeRef.current.rotation.x = -Math.sin(t * 0.3) * 0.2;
-            wireframeRef.current.rotation.y = -t * 0.1;
-            wireframeRef.current.rotation.z = -Math.cos(t * 0.2) * 0.1;
-        }
+        // Gentle sway
+        groupRef.current.rotation.y = Math.sin(t * 0.08) * 0.06;
     });
 
     return (
-        <group>
-            {/* Main icosahedron with gradient-like material */}
-            <Float
-                speed={reducedMotion ? 0 : 2}
-                rotationIntensity={reducedMotion ? 0 : 0.5}
-                floatIntensity={reducedMotion ? 0 : 0.5}
-            >
-                <mesh ref={meshRef} scale={1.8}>
-                    <icosahedronGeometry args={[1, 1]} />
-                    <MeshDistortMaterial
-                        color="#0ea5e9"
-                        emissive="#0284c7"
-                        emissiveIntensity={0.2}
-                        metalness={0.9}
-                        roughness={0.1}
-                        distort={reducedMotion ? 0 : 0.3}
-                        speed={reducedMotion ? 0 : 2}
-                    />
-                </mesh>
-            </Float>
+        <group ref={groupRef} position={[0, -3.2, -1.5]}>
+            {buildings.map((b, i) => (
+                <BuildingMesh key={i} b={b} index={i} reducedMotion={reducedMotion} />
+            ))}
 
-            {/* Wireframe overlay - slightly larger */}
-            <Float
-                speed={reducedMotion ? 0 : 1.5}
-                rotationIntensity={reducedMotion ? 0 : 0.3}
-                floatIntensity={reducedMotion ? 0 : 0.3}
-            >
-                <mesh ref={wireframeRef} scale={2.2}>
-                    <icosahedronGeometry args={[1, 1]} />
-                    <meshBasicMaterial
-                        color="#22d3ee"
-                        wireframe
-                        transparent
-                        opacity={0.3}
-                    />
-                </mesh>
-            </Float>
-
-            {/* Inner glow sphere */}
-            <mesh scale={1.2}>
-                <sphereGeometry args={[1, 32, 32]} />
-                <meshBasicMaterial
-                    color="#a855f7"
-                    transparent
-                    opacity={0.1}
+            {/* Lake Michigan reflection plane */}
+            <mesh position={[0, -0.52, 0.5]} rotation={[-Math.PI / 2, 0, 0]}>
+                <planeGeometry args={[16, 4]} />
+                <meshStandardMaterial
+                    color="#0a1628"
+                    metalness={0.95}
+                    roughness={0.1}
+                    emissive="#D4A44C"
+                    emissiveIntensity={0.015}
                 />
             </mesh>
-
-            {/* Orbiting particles */}
-            <OrbitingParticles reducedMotion={reducedMotion} />
         </group>
     );
 }
 
-function OrbitingParticles({ reducedMotion }) {
-    const particlesRef = useRef();
+function BuildingMesh({ b, index, reducedMotion }) {
+    const windowMatRefs = useRef([]);
 
-    const particles = useMemo(() => {
-        const temp = [];
-        for (let i = 0; i < 50; i++) {
-            const theta = Math.random() * Math.PI * 2;
-            const phi = Math.random() * Math.PI;
-            const r = 2.5 + Math.random() * 1.5;
-
-            temp.push({
-                position: [
-                    r * Math.sin(phi) * Math.cos(theta),
-                    r * Math.sin(phi) * Math.sin(theta),
-                    r * Math.cos(phi),
-                ],
-                speed: 0.5 + Math.random() * 0.5,
-                offset: Math.random() * Math.PI * 2,
-            });
+    // Generate windows
+    const windowData = useMemo(() => {
+        const wins = [];
+        const rows = Math.floor(b.h / 0.18);
+        const cols = Math.max(2, Math.floor(b.w / 0.12));
+        for (let r = 1; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                if (Math.random() > 0.3) {
+                    wins.push({
+                        pos: [
+                            (c - (cols - 1) / 2) * 0.1,
+                            r * 0.18 - 0.15,
+                            b.d / 2 + 0.005,
+                        ],
+                        phase: Math.random() * Math.PI * 2,
+                        speed: 0.15 + Math.random() * 0.35,
+                        base: 0.15 + Math.random() * 0.35,
+                    });
+                }
+            }
         }
-        return temp;
-    }, []);
+        return wins;
+    }, [b]);
 
     useFrame(({ clock }) => {
         if (reducedMotion) return;
-
         const t = clock.getElapsedTime();
-
-        if (particlesRef.current) {
-            particlesRef.current.rotation.y = t * 0.05;
-            particlesRef.current.rotation.x = Math.sin(t * 0.1) * 0.1;
-        }
+        windowMatRefs.current.forEach((mat, i) => {
+            if (mat) {
+                const w = windowData[i];
+                mat.opacity = w.base + Math.sin(t * w.speed + w.phase) * 0.2;
+            }
+        });
     });
 
     return (
-        <group ref={particlesRef}>
-            {particles.map((particle, i) => (
-                <mesh key={i} position={particle.position}>
-                    <sphereGeometry args={[0.02, 8, 8]} />
+        <group position={[b.x, 0, 0]}>
+            {/* Tiered building (Willis/Trump style) */}
+            {b.tier ? (
+                b.tier.map((t, ti) => (
+                    <mesh key={ti} position={[0, t.h / 2 - 0.5, 0]}>
+                        <boxGeometry args={[t.w, t.h, b.d]} />
+                        <meshStandardMaterial
+                            color="#0c111c"
+                            emissive="#1a2540"
+                            emissiveIntensity={0.08}
+                            metalness={0.85}
+                            roughness={0.3}
+                        />
+                    </mesh>
+                ))
+            ) : (
+                <mesh position={[0, b.h / 2 - 0.5, 0]}>
+                    <boxGeometry args={[b.w, b.h, b.d]} />
+                    <meshStandardMaterial
+                        color="#0c111c"
+                        emissive="#1a2540"
+                        emissiveIntensity={0.08}
+                        metalness={0.85}
+                        roughness={0.3}
+                    />
+                </mesh>
+            )}
+
+            {/* Antenna */}
+            {b.antenna && (
+                <mesh position={[0, b.h - 0.5 + b.antenna / 2, 0]}>
+                    <cylinderGeometry args={[0.01, 0.02, b.antenna, 4]} />
+                    <meshBasicMaterial color="#94A3B8" transparent opacity={0.6} />
+                </mesh>
+            )}
+
+            {/* Spire */}
+            {b.spire && (
+                <mesh position={[0, b.h - 0.5 + b.spire / 2, 0]}>
+                    <coneGeometry args={[0.06, b.spire, 4]} />
+                    <meshStandardMaterial
+                        color="#1a2540"
+                        emissive="#D4A44C"
+                        emissiveIntensity={0.05}
+                        metalness={0.9}
+                        roughness={0.2}
+                    />
+                </mesh>
+            )}
+
+            {/* Animated windows */}
+            {windowData.map((w, i) => (
+                <mesh key={i} position={w.pos}>
+                    <planeGeometry args={[0.05, 0.07]} />
                     <meshBasicMaterial
-                        color={i % 3 === 0 ? '#22d3ee' : i % 3 === 1 ? '#a855f7' : '#ec4899'}
+                        ref={el => { windowMatRefs.current[i] = el; }}
+                        color="#D4A44C"
                         transparent
-                        opacity={0.8}
+                        opacity={w.base}
                     />
                 </mesh>
             ))}
@@ -133,20 +174,206 @@ function OrbitingParticles({ reducedMotion }) {
     );
 }
 
+/* ═══════════════════════════════════════
+   HOLOGRAPHIC PRICE VISUALIZATION
+   Modern, animated geometric chart
+   ═══════════════════════════════════════ */
+function HolographicChart({ reducedMotion }) {
+    const groupRef = useRef();
+    const glowRef = useRef();
+
+    const { tubeGeo, areaGeo, dataPoints } = useMemo(() => {
+        const pts = [];
+        let price = 0;
+        const prices = [];
+
+        for (let i = 0; i < 50; i++) {
+            price += (Math.random() - 0.42) * 0.25;
+            prices.push(price);
+            pts.push(new THREE.Vector3((i / 50) * 8 - 4, price * 0.8, 0));
+        }
+
+        const curve = new THREE.CatmullRomCurve3(pts);
+        const tube = new THREE.TubeGeometry(curve, 200, 0.018, 8, false);
+
+        // Area fill — shape from line down to baseline
+        const shape = new THREE.Shape();
+        const baseline = -1.5;
+        shape.moveTo(pts[0].x, baseline);
+        pts.forEach(p => shape.lineTo(p.x, p.y));
+        shape.lineTo(pts[pts.length - 1].x, baseline);
+        shape.closePath();
+        const areaGeometry = new THREE.ShapeGeometry(shape);
+
+        // Key data points (peaks and valleys) for pulse markers
+        const keyPts = [];
+        for (let i = 2; i < prices.length - 2; i++) {
+            if ((prices[i] > prices[i - 1] && prices[i] > prices[i + 1]) ||
+                (prices[i] < prices[i - 1] && prices[i] < prices[i + 1])) {
+                keyPts.push({
+                    pos: [(i / 50) * 8 - 4, prices[i] * 0.8, 0],
+                    isPeak: prices[i] > prices[i - 1],
+                    phase: Math.random() * Math.PI * 2,
+                });
+            }
+        }
+
+        return { tubeGeo: tube, areaGeo: areaGeometry, dataPoints: keyPts };
+    }, []);
+
+    useFrame(({ clock }) => {
+        if (reducedMotion || !groupRef.current) return;
+        const t = clock.getElapsedTime();
+        groupRef.current.rotation.y = Math.sin(t * 0.12) * 0.1;
+        groupRef.current.position.y = Math.sin(t * 0.3) * 0.05 + 0.5;
+
+        if (glowRef.current) {
+            glowRef.current.opacity = 0.06 + Math.sin(t * 0.5) * 0.02;
+        }
+    });
+
+    return (
+        <group ref={groupRef} position={[0, 0.5, 0]}>
+            {/* Glowing price line */}
+            <mesh geometry={tubeGeo}>
+                <meshStandardMaterial
+                    color="#D4A44C"
+                    emissive="#D4A44C"
+                    emissiveIntensity={1.2}
+                    metalness={0.8}
+                    roughness={0.1}
+                />
+            </mesh>
+
+
+            {/* Area fill under curve */}
+            <mesh geometry={areaGeo} position={[0, 0, -0.05]}>
+                <meshBasicMaterial
+                    ref={glowRef}
+                    color="#D4A44C"
+                    transparent
+                    opacity={0.06}
+                    side={THREE.DoubleSide}
+                />
+            </mesh>
+
+            {/* Pulsing data point markers */}
+            {dataPoints.map((dp, i) => (
+                <DataPulse key={i} data={dp} reducedMotion={reducedMotion} />
+            ))}
+
+            {/* Subtle horizontal grid */}
+            {[-1.0, -0.5, 0, 0.5, 1.0].map((y, i) => (
+                <mesh key={`h${i}`} position={[0, y, -0.08]}>
+                    <planeGeometry args={[9, 0.002]} />
+                    <meshBasicMaterial color="#D4A44C" transparent opacity={0.06} />
+                </mesh>
+            ))}
+        </group>
+    );
+}
+
+function DataPulse({ data, reducedMotion }) {
+    const meshRef = useRef();
+    const ringRef = useRef();
+
+    useFrame(({ clock }) => {
+        if (reducedMotion) return;
+        const t = clock.getElapsedTime();
+        const pulse = Math.sin(t * 1.5 + data.phase) * 0.5 + 0.5;
+
+        if (meshRef.current) {
+            meshRef.current.scale.setScalar(0.8 + pulse * 0.4);
+        }
+        if (ringRef.current) {
+            ringRef.current.scale.setScalar(1 + pulse * 1.5);
+            ringRef.current.material.opacity = 0.3 * (1 - pulse);
+        }
+    });
+
+    const color = data.isPeak ? '#34D399' : '#EF4444';
+
+    return (
+        <group position={data.pos}>
+            {/* Core dot */}
+            <mesh ref={meshRef}>
+                <sphereGeometry args={[0.04, 12, 12]} />
+                <meshStandardMaterial
+                    color={color}
+                    emissive={color}
+                    emissiveIntensity={1}
+                />
+            </mesh>
+            {/* Expanding ring */}
+            <mesh ref={ringRef} rotation={[0, 0, 0]}>
+                <ringGeometry args={[0.06, 0.08, 16]} />
+                <meshBasicMaterial
+                    color={color}
+                    transparent
+                    opacity={0.3}
+                    side={THREE.DoubleSide}
+                />
+            </mesh>
+        </group>
+    );
+}
+
+/* ═══════════════════════════════════════
+   Ambient particles — financial data dust
+   ═══════════════════════════════════════ */
+function AmbientParticles({ reducedMotion }) {
+    const groupRef = useRef();
+
+    const particles = useMemo(() => {
+        return Array.from({ length: 80 }, () => ({
+            pos: [
+                (Math.random() - 0.5) * 16,
+                (Math.random() - 0.5) * 10,
+                (Math.random() - 0.5) * 8 - 2,
+            ],
+            size: 0.008 + Math.random() * 0.015,
+            color: ['#D4A44C', '#34D399', '#94A3B8', '#ffffff'][Math.floor(Math.random() * 4)],
+        }));
+    }, []);
+
+    useFrame(({ clock }) => {
+        if (reducedMotion || !groupRef.current) return;
+        groupRef.current.rotation.y = clock.getElapsedTime() * 0.008;
+    });
+
+    return (
+        <group ref={groupRef}>
+            {particles.map((p, i) => (
+                <mesh key={i} position={p.pos}>
+                    <sphereGeometry args={[p.size, 4, 4]} />
+                    <meshBasicMaterial color={p.color} transparent opacity={0.5} />
+                </mesh>
+            ))}
+        </group>
+    );
+}
+
+/* ═══════════════════════════════════════
+   MAIN EXPORT
+   ═══════════════════════════════════════ */
 export default function HeroElement3D({ reducedMotion = false }) {
     return (
         <div className="absolute inset-0 w-full h-full">
             <Canvas
-                camera={{ position: [0, 0, 5], fov: 60 }}
+                camera={{ position: [0, 1.5, 8], fov: 50 }}
                 gl={{ antialias: true, alpha: true }}
                 style={{ background: 'transparent' }}
             >
-                <ambientLight intensity={0.3} />
-                <pointLight position={[10, 10, 10]} intensity={1} color="#ffffff" />
-                <pointLight position={[-10, -10, -10]} intensity={0.5} color="#22d3ee" />
-                <pointLight position={[0, 10, 0]} intensity={0.5} color="#a855f7" />
+                <ambientLight intensity={0.15} />
+                <pointLight position={[10, 10, 10]} intensity={0.6} color="#ffffff" />
+                <pointLight position={[-8, 5, -5]} intensity={0.4} color="#D4A44C" />
+                <pointLight position={[0, -2, 6]} intensity={0.2} color="#34D399" />
+                {/* Moonlight from above */}
+                <directionalLight position={[0, 10, 2]} intensity={0.15} color="#94A3B8" />
 
-                <FloatingGeometry reducedMotion={reducedMotion} />
+                <HolographicChart reducedMotion={reducedMotion} />
+                <ChicagoSkyline reducedMotion={reducedMotion} />
+                <AmbientParticles reducedMotion={reducedMotion} />
             </Canvas>
         </div>
     );

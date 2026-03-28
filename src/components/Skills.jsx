@@ -46,8 +46,8 @@ export default function Skills() {
             className="py-20 md:py-32 bg-dark-500 relative overflow-hidden"
         >
             {/* Background decorations */}
-            <div className="absolute top-1/4 left-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-accent-cyan/5 rounded-full blur-3xl" />
+            <div className="absolute top-1/4 left-0 w-96 h-96 bg-accent-emerald/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-accent-gold/5 rounded-full blur-3xl" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
@@ -59,9 +59,9 @@ export default function Skills() {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-4">
-                        Skills & <span className="text-accent-cyan">Technologies</span>
+                        Skills & <span className="text-accent-gold">Technologies</span>
                     </h2>
-                    <div className="w-20 h-1 bg-accent-cyan mx-auto" />
+                    <div className="w-20 h-1 bg-accent-gold mx-auto" />
                 </motion.div>
 
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -85,7 +85,7 @@ export default function Skills() {
                             <div
                                 key={category.title}
                                 ref={(el) => (cardsRef.current[catIndex] = el)}
-                                className="p-6 bg-dark-400/50 rounded-2xl border border-dark-200/20 hover:border-accent-cyan/30 transition-all duration-300"
+                                className="p-6 bg-dark-400/50 rounded-2xl border border-dark-200/20 hover:border-accent-gold/30 transition-all duration-300"
                             >
                                 <h3 className="text-lg font-display font-semibold text-white mb-4">
                                     {category.title}
@@ -94,7 +94,7 @@ export default function Skills() {
                                     {category.items.map((skill, skillIndex) => (
                                         <motion.span
                                             key={skill}
-                                            className="px-3 py-2 text-sm bg-dark-300 text-gray-300 rounded-lg hover:bg-accent-cyan/20 hover:text-accent-cyan transition-colors cursor-default"
+                                            className="px-3 py-2 text-sm bg-dark-300 text-gray-300 rounded-lg hover:bg-accent-gold/20 hover:text-accent-gold transition-colors cursor-default"
                                             initial={{ opacity: 0, scale: 0.8 }}
                                             whileInView={{ opacity: 1, scale: 1 }}
                                             viewport={{ once: true }}

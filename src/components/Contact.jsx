@@ -53,7 +53,7 @@ export default function Contact() {
             className="py-20 md:py-32 bg-dark-500 relative overflow-hidden"
         >
             {/* Background decorations */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[800px] bg-gradient-radial from-accent-cyan/10 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[800px] bg-gradient-radial from-accent-gold/10 via-transparent to-transparent pointer-events-none" />
 
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Section Header */}
@@ -65,12 +65,12 @@ export default function Contact() {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-4">
-                        Let's <span className="text-accent-cyan">Connect</span>
+                        Let's <span className="text-accent-gold">Connect</span>
                     </h2>
-                    <div className="w-20 h-1 bg-accent-cyan mx-auto mb-6" />
+                    <div className="w-20 h-1 bg-accent-gold mx-auto mb-6" />
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        I'm always open to discussing new opportunities, interesting projects,
-                        or just having a chat about technology.
+                        I'm always open to discussing quantitative finance, risk analytics,
+                        or new opportunities in the quant space.
                     </p>
                 </motion.div>
 
@@ -85,11 +85,11 @@ export default function Contact() {
                     {/* Email */}
                     <MagneticButton
                         href={`mailto:${personalInfo.email}`}
-                        className="p-6 bg-dark-400/50 rounded-2xl border border-dark-200/20 hover:border-accent-cyan/50 transition-all duration-300 flex items-center gap-4 group"
+                        className="p-6 bg-dark-400/50 rounded-2xl border border-dark-200/20 hover:border-accent-gold/50 transition-all duration-300 flex items-center gap-4 group"
                         reducedMotion={prefersReducedMotion}
                     >
-                        <div className="w-12 h-12 bg-accent-cyan/20 rounded-xl flex items-center justify-center group-hover:bg-accent-cyan/30 transition-colors">
-                            <FaEnvelope className="text-accent-cyan text-xl" />
+                        <div className="w-12 h-12 bg-accent-gold/20 rounded-xl flex items-center justify-center group-hover:bg-accent-gold/30 transition-colors">
+                            <FaEnvelope className="text-accent-gold text-xl" />
                         </div>
                         <div>
                             <p className="text-gray-400 text-sm">Email</p>
@@ -100,11 +100,11 @@ export default function Contact() {
                     {/* Phone */}
                     <MagneticButton
                         href={`tel:${personalInfo.phone}`}
-                        className="p-6 bg-dark-400/50 rounded-2xl border border-dark-200/20 hover:border-accent-purple/50 transition-all duration-300 flex items-center gap-4 group"
+                        className="p-6 bg-dark-400/50 rounded-2xl border border-dark-200/20 hover:border-accent-emerald/50 transition-all duration-300 flex items-center gap-4 group"
                         reducedMotion={prefersReducedMotion}
                     >
-                        <div className="w-12 h-12 bg-accent-purple/20 rounded-xl flex items-center justify-center group-hover:bg-accent-purple/30 transition-colors">
-                            <FaPhone className="text-accent-purple text-xl" />
+                        <div className="w-12 h-12 bg-accent-emerald/20 rounded-xl flex items-center justify-center group-hover:bg-accent-emerald/30 transition-colors">
+                            <FaPhone className="text-accent-emerald text-xl" />
                         </div>
                         <div>
                             <p className="text-gray-400 text-sm">Phone</p>
@@ -114,8 +114,8 @@ export default function Contact() {
 
                     {/* Location */}
                     <div className="p-6 bg-dark-400/50 rounded-2xl border border-dark-200/20 flex items-center gap-4 sm:col-span-2 lg:col-span-1">
-                        <div className="w-12 h-12 bg-accent-pink/20 rounded-xl flex items-center justify-center">
-                            <FaMapMarkerAlt className="text-accent-pink text-xl" />
+                        <div className="w-12 h-12 bg-accent-slate/20 rounded-xl flex items-center justify-center">
+                            <FaMapMarkerAlt className="text-accent-slate text-xl" />
                         </div>
                         <div>
                             <p className="text-gray-400 text-sm">Location</p>
@@ -138,10 +138,10 @@ export default function Contact() {
                             <MagneticButton
                                 key={link.id}
                                 href={link.url}
-                                className="w-14 h-14 bg-dark-400/50 rounded-xl border border-dark-200/20 hover:border-accent-cyan/50 hover:bg-dark-300/50 transition-all duration-300 flex items-center justify-center group"
+                                className="w-14 h-14 bg-dark-400/50 rounded-xl border border-dark-200/20 hover:border-accent-gold/50 hover:bg-dark-300/50 transition-all duration-300 flex items-center justify-center group"
                                 reducedMotion={prefersReducedMotion}
                             >
-                                <Icon className="text-gray-400 text-xl group-hover:text-accent-cyan transition-colors" />
+                                <Icon className="text-gray-400 text-xl group-hover:text-accent-gold transition-colors" />
                             </MagneticButton>
                         );
                     })}
@@ -157,7 +157,7 @@ export default function Contact() {
                 >
                     <MagneticButton
                         href={`mailto:${personalInfo.email}?subject=Let's%20work%20together`}
-                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-accent-cyan to-accent-purple text-dark-500 font-semibold rounded-xl hover:shadow-glow-lg transition-all duration-300"
+                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-accent-gold to-accent-emerald text-dark-500 font-semibold rounded-xl hover:shadow-glow-lg transition-all duration-300"
                         reducedMotion={prefersReducedMotion}
                     >
                         <FaEnvelope />

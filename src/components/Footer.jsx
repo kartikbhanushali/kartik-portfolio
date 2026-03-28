@@ -17,9 +17,8 @@ export default function Footer() {
                     {/* Logo & Copyright */}
                     <div className="flex items-center gap-2 text-gray-400">
                         <span className="font-display font-bold text-white">
-                            <span className="text-accent-cyan">&lt;</span>
                             {personalInfo.firstName}
-                            <span className="text-accent-cyan">/&gt;</span>
+                            <span className="text-accent-gold">.</span>
                         </span>
                         <span className="text-gray-600">•</span>
                         <span className="text-sm">
@@ -34,7 +33,7 @@ export default function Footer() {
                             animate={{ scale: [1, 1.2, 1] }}
                             transition={{ duration: 1, repeat: Infinity }}
                         >
-                            <FaHeart className="text-accent-pink" />
+                            <FaHeart className="text-accent-slate" />
                         </motion.span>
                         <span>using React</span>
                     </div>
@@ -48,7 +47,7 @@ export default function Footer() {
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-accent-cyan transition-colors"
+                                className="text-gray-400 hover:text-accent-gold transition-colors"
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                             >
@@ -59,7 +58,7 @@ export default function Footer() {
                         {/* Scroll to top */}
                         <motion.button
                             onClick={scrollToTop}
-                            className="w-10 h-10 bg-dark-300 rounded-lg flex items-center justify-center text-gray-400 hover:text-accent-cyan hover:bg-dark-200 transition-all"
+                            className="w-10 h-10 bg-dark-300 rounded-lg flex items-center justify-center text-gray-400 hover:text-accent-gold hover:bg-dark-200 transition-all"
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
                         >

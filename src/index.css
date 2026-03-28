@@ -48,23 +48,23 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #22d3ee;
+  background: #D4A44C;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a855f7;
+  background: #34D399;
 }
 
 /* Selection */
 ::selection {
-  background-color: #22d3ee;
+  background-color: #D4A44C;
   color: #0a0c10;
 }
 
 /* Focus styles */
 :focus-visible {
-  outline: 2px solid #22d3ee;
+  outline: 2px solid #D4A44C;
   outline-offset: 2px;
 }
 
@@ -74,7 +74,7 @@ body {
   top: -100%;
   left: 0;
   padding: 1rem;
-  background: #22d3ee;
+  background: #D4A44C;
   color: #0a0c10;
   z-index: 9999;
   transition: top 0.3s;
@@ -97,7 +97,7 @@ body {
   left: 50%;
   width: 0;
   height: 2px;
-  background: #22d3ee;
+  background: #D4A44C;
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -108,7 +108,7 @@ body {
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #22d3ee, #a855f7);
+  background: linear-gradient(135deg, #D4A44C, #34D399);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -139,11 +139,23 @@ canvas {
 /* Custom layer for component styles */
 @layer components {
   .btn-primary {
-    @apply px-8 py-4 bg-cyan-400 text-gray-900 font-semibold rounded-lg transition-colors hover:bg-cyan-500;
+    @apply px-8 py-4 font-semibold rounded-lg transition-colors;
+    background-color: #D4A44C;
+    color: #0a0c10;
+  }
+
+  .btn-primary:hover {
+    background-color: #c49640;
   }
 
   .btn-secondary {
-    @apply px-8 py-4 border border-cyan-400 text-cyan-400 font-semibold rounded-lg transition-colors hover:bg-cyan-400/10;
+    @apply px-8 py-4 font-semibold rounded-lg transition-colors;
+    border: 1px solid #D4A44C;
+    color: #D4A44C;
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(212, 164, 76, 0.1);
   }
 
   .section-title {
@@ -155,6 +167,6 @@ canvas {
   }
 
   .card:hover {
-    @apply border-cyan-400/30;
+    border-color: rgba(212, 164, 76, 0.3);
   }
 }

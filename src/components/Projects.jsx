@@ -140,8 +140,8 @@ export default function Projects() {
             className="py-20 md:py-32 bg-dark-500 relative overflow-hidden"
         >
             {/* Background decorations */}
-            <div className="absolute top-1/3 right-0 w-96 h-96 bg-accent-pink/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-1/3 left-0 w-72 h-72 bg-accent-cyan/5 rounded-full blur-3xl" />
+            <div className="absolute top-1/3 right-0 w-96 h-96 bg-accent-slate/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-1/3 left-0 w-72 h-72 bg-accent-gold/5 rounded-full blur-3xl" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
@@ -153,12 +153,12 @@ export default function Projects() {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-4">
-                        Featured <span className="text-accent-cyan">Projects</span>
+                        Featured <span className="text-accent-gold">Projects</span>
                     </h2>
-                    <div className="w-20 h-1 bg-accent-cyan mx-auto mb-4" />
+                    <div className="w-20 h-1 bg-accent-gold mx-auto mb-4" />
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        A showcase of my recent work, featuring cloud-native applications,
-                        real-time platforms, and scalable systems.
+                        A showcase of my quantitative research — from machine learning
+                        price prediction to credit risk modeling.
                     </p>
                 </motion.div>
 

@@ -32,9 +32,9 @@ module.exports = {
                     900: '#000000',
                 },
                 accent: {
-                    cyan: '#22d3ee',
-                    purple: '#a855f7',
-                    pink: '#ec4899',
+                    gold: '#D4A44C',
+                    emerald: '#34D399',
+                    slate: '#94A3B8',
                     orange: '#f97316',
                 }
             },
@@ -94,9 +94,9 @@ module.exports = {
                 'hero-gradient': 'linear-gradient(135deg, #0a0c10 0%, #1a1f2e 50%, #0a0c10 100%)',
             },
             boxShadow: {
-                'glow': '0 0 20px rgba(34, 211, 238, 0.3)',
-                'glow-lg': '0 0 40px rgba(34, 211, 238, 0.4)',
-                'glow-purple': '0 0 20px rgba(168, 85, 247, 0.3)',
+                'glow': '0 0 20px rgba(212, 164, 76, 0.3)',
+                'glow-lg': '0 0 40px rgba(212, 164, 76, 0.4)',
+                'glow-emerald': '0 0 20px rgba(52, 211, 153, 0.3)',
             },
         },
     },

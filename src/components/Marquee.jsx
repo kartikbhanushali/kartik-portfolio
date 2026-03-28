@@ -1,42 +1,37 @@
 import React from 'react';
 import {
-    FaReact,
-    FaNodeJs,
     FaPython,
-    FaAws,
-    FaDocker,
-    FaGitAlt,
-    FaJs,
     FaDatabase,
+    FaChartLine,
+    FaChartBar,
+    FaChartArea,
+    FaPercentage,
 } from 'react-icons/fa';
 import {
-    SiTypescript,
-    SiMongodb,
-    SiPostgresql,
-    SiRedis,
-    SiGraphql,
-    SiTerraform,
-    SiExpress,
+    SiCplusplus,
+    SiR,
 } from 'react-icons/si';
+import { TbMathFunction, TbChartCandle, TbReportAnalytics, TbBrandOffice, TbChartDots3 } from 'react-icons/tb';
+import { GiDiceSixFacesSix } from 'react-icons/gi';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
-// Tech logos with their colors
+// Quant-relevant tech logos with their colors
 const techLogos = [
-    { Icon: FaReact, color: '#61DAFB', name: 'React' },
-    { Icon: FaNodeJs, color: '#339933', name: 'Node.js' },
-    { Icon: SiTypescript, color: '#3178C6', name: 'TypeScript' },
     { Icon: FaPython, color: '#3776AB', name: 'Python' },
-    { Icon: FaAws, color: '#FF9900', name: 'AWS' },
-    { Icon: FaDocker, color: '#2496ED', name: 'Docker' },
-    { Icon: SiMongodb, color: '#47A248', name: 'MongoDB' },
-    { Icon: SiPostgresql, color: '#4169E1', name: 'PostgreSQL' },
-    { Icon: SiRedis, color: '#DC382D', name: 'Redis' },
-    { Icon: SiGraphql, color: '#E10098', name: 'GraphQL' },
-    { Icon: FaGitAlt, color: '#F05032', name: 'Git' },
-    { Icon: FaJs, color: '#F7DF1E', name: 'JavaScript' },
-    { Icon: SiTerraform, color: '#7B42BC', name: 'Terraform' },
-    { Icon: SiExpress, color: '#FFFFFF', name: 'Express.js' },
-    { Icon: FaDatabase, color: '#22D3EE', name: 'SQL' },
+    { Icon: SiCplusplus, color: '#00599C', name: 'C++' },
+    { Icon: SiR, color: '#276DC3', name: 'R' },
+    { Icon: TbMathFunction, color: '#D4A44C', name: 'MATLAB' },
+    { Icon: FaDatabase, color: '#4169E1', name: 'SQL' },
+    { Icon: FaChartLine, color: '#34D399', name: 'VaR' },
+    { Icon: GiDiceSixFacesSix, color: '#D4A44C', name: 'Monte Carlo' },
+    { Icon: TbChartCandle, color: '#F59E0B', name: 'Derivatives' },
+    { Icon: FaChartArea, color: '#10B981', name: 'Fixed Income' },
+    { Icon: FaPercentage, color: '#EF4444', name: 'Credit Risk' },
+    { Icon: TbChartDots3, color: '#8B5CF6', name: 'Stochastic Calc' },
+    { Icon: FaChartBar, color: '#D4A44C', name: 'Bloomberg' },
+    { Icon: TbReportAnalytics, color: '#06B6D4', name: 'Factor Analysis' },
+    { Icon: TbMathFunction, color: '#F97316', name: 'Stress Testing' },
+    { Icon: TbBrandOffice, color: '#217346', name: 'Excel' },
 ];
 
 // 3D Cube Component

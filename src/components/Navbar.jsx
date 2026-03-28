@@ -54,9 +54,8 @@ export default function Navbar() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <span className="text-accent-cyan">&lt;</span>
                         {personalInfo.firstName}
-                        <span className="text-accent-cyan">/&gt;</span>
+                        <span className="text-accent-gold">.</span>
                     </motion.a>
 
                     {/* Desktop Navigation */}
@@ -76,9 +75,9 @@ export default function Navbar() {
                         {/* Resume Download Button */}
                         <a
                             ref={(el) => (linksRef.current[navLinks.length] = el)}
-                            href={`${process.env.PUBLIC_URL}/Harsh_Resume.pdf`}
-                            download="Harsh_Ramani_Resume.pdf"
-                            className="nav-link ml-4 px-4 py-2 bg-accent-cyan text-dark-500 text-sm font-semibold rounded-lg hover:bg-accent-cyan/90 transition-all duration-300 flex items-center gap-2"
+                            href={`${process.env.PUBLIC_URL}/Bhanushali_Kartik_Resume.pdf`}
+                            download="Kartik_Bhanushali_Resume.pdf"
+                            className="nav-link ml-4 px-4 py-2 bg-accent-gold text-dark-500 text-sm font-semibold rounded-lg hover:bg-accent-gold/90 transition-all duration-300 flex items-center gap-2"
                         >
                             <FaDownload className="text-sm" />
                             Resume
@@ -122,9 +121,9 @@ export default function Navbar() {
                             ))}
                             {/* Resume Download Button - Mobile */}
                             <motion.a
-                                href={`${process.env.PUBLIC_URL}/Harsh_Resume.pdf`}
-                                download="Harsh_Ramani_Resume.pdf"
-                                className="flex items-center gap-2 px-4 py-3 bg-accent-cyan text-dark-500 font-semibold rounded-lg"
+                                href={`${process.env.PUBLIC_URL}/Bhanushali_Kartik_Resume.pdf`}
+                                download="Kartik_Bhanushali_Resume.pdf"
+                                className="flex items-center gap-2 px-4 py-3 bg-accent-gold text-dark-500 font-semibold rounded-lg"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: navLinks.length * 0.05 }}

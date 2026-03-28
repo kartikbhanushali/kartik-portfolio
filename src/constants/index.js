@@ -1,14 +1,14 @@
-// Portfolio constants - All data sourced from Harsh_Resume.pdf
+// Portfolio constants - All data sourced from Bhanushali Kartik Resume.pdf
 
 export const personalInfo = {
-    name: "Harsh Anilkumar Ramani",
-    firstName: "Harsh Ramani",
+    name: "Kartik Kanti Bhanushali",
+    firstName: "Kartik Bhanushali",
     location: "Chicago, IL",
-    phone: "+1 469-316-1500",
-    email: "harshramani76@gmail.com",
-    headline: "Software Engineer",
-    tagline: "Building exceptional digital experiences with modern web technologies",
-    bio: "I'm a passionate software engineer specializing in building scalable web applications with React, Node.js, and cloud technologies. Currently pursuing my Master's in Computer Science at Stony Brook University, I bring experience from building real-time systems, LMS platforms, and telemedicine applications.",
+    phone: "862-955-9939",
+    email: "kartik.bhanushali@rutgers.edu",
+    headline: "Quant Engineer",
+    tagline: "Quantitative risk modeling, derivatives pricing & data-driven financial strategies",
+    bio: "I'm a Quant Engineer specializing in risk analytics, derivatives pricing, and quantitative research. With a Master's in Quantitative Finance from Rutgers Business School and deep expertise in Python, stochastic calculus, and financial modeling, I build models that drive smarter risk decisions across counterparty credit risk, market risk, and portfolio optimization — currently at Bank of America.",
 };
 
 export const navLinks = [
@@ -24,98 +24,116 @@ export const socialLinks = [
     {
         id: "linkedin",
         label: "LinkedIn",
-        url: "https://www.linkedin.com/in/ramani-harsh/",
+        url: "https://www.linkedin.com/in/kartik-bhanushali/",
         icon: "FaLinkedin",
     },
     {
-        id: "github",
-        label: "GitHub",
-        url: "https://github.com/harshramani00",
-        icon: "FaGithub",
-    },
-
-    {
         id: "email",
         label: "Email",
-        url: "mailto:harshramani76@gmail.com",
+        url: "mailto:kartik.bhanushali@rutgers.edu",
         icon: "FaEnvelope",
     },
 ];
 
 export const education = [
     {
-        degree: "Master of Science in Computer Science",
-        school: "Stony Brook University",
-        location: "New York, USA",
-        period: "August 2023 – May 2025",
-        coursework: ["Theory of Database Systems", "Data Science Fundamentals", "Machine Learning"],
+        degree: "Master's in Quantitative Finance",
+        school: "Rutgers Business School, Newark",
+        location: "NJ, USA",
+        period: "August 2023 – December 2024",
+        gpa: "3.95",
+        coursework: ["Stochastic Calculus", "Derivatives", "Fixed Income", "Econometrics", "Financial Time Series", "Advance Risk Management"],
     },
     {
-        degree: "Bachelor of Technology in Information Technology",
-        school: "University Of Mumbai",
+        degree: "Bachelor of Technology in Computer Science Engineering",
+        school: "University of Mumbai",
         location: "Mumbai, India",
-        period: "August 2019 – July 2023",
-        coursework: ["Data Structures & Algorithms", "Database Systems", "Operating System"],
+        period: "August 2018 – May 2022",
+        gpa: "3.82",
+        coursework: ["Mathematics", "Financial Modelling", "Data Structures"],
     },
 ];
 
 export const skills = {
-    languages: {
-        title: "Languages & Frameworks",
-        items: ["Python", "Java", "JavaScript", "TypeScript", "React", "Node.js", "Express.js", "D3.js"],
+    programming: {
+        title: "Programming & Languages",
+        items: ["Python", "C++", "R", "MATLAB", "SQL", "Base SAS"],
     },
-    databases: {
-        title: "Databases & Caching",
-        items: ["SQL", "PostgreSQL", "MongoDB", "Redis"],
-    },
-    cloud: {
-        title: "Cloud & DevOps",
-        items: ["AWS (EC2, S3, Lambda)", "Docker", "Terraform", "Jenkins", "GitHub Actions", "CI/CD", "Packer"],
+    quantitative: {
+        title: "Quantitative & Risk",
+        items: ["Value at Risk (VaR)", "Monte Carlo Simulation", "Stochastic Calculus", "Derivatives Pricing", "Credit Risk (CCAR, CECL, IFRS9)", "Factor Analysis", "Mean-Variance Optimization", "Stress Testing"],
     },
     tools: {
-        title: "Tools & APIs",
-        items: ["Git", "REST", "GraphQL", "WebSockets", "Postman", "Jira", "Linux"],
+        title: "Tools & Platforms",
+        items: ["Bloomberg Terminal", "SAP", "Microsoft Excel", "PowerPoint", "Visio", "Credit Studio", "Pyrite"],
+    },
+    certifications: {
+        title: "Certifications & Awards",
+        items: ["CFA Level 3 Candidate", "Bloomberg Market Concepts", "Quantitative Trader – King's College London", "Deloitte Move-the-Dot Award", "Deloitte Applause Award"],
     },
 };
 
 export const experience = [
     {
         id: 1,
-        title: "Software Engineer",
-        company: "Verveware",
-        location: "IL, USA",
-        period: "October 2025 – Present",
+        title: "Quantitative Risk Analyst – Counterparty Credit Risk",
+        company: "Bank of America",
+        location: "USA",
+        period: "January 2025 – Present",
         highlights: [
-            "Designed and implemented a production real-time support chat system using room-based WebSocket routing, supporting concurrent employee and admin interactions",
-            "Developed an LMS module to track caregiver course completion, reducing manual onboarding effort by 20%",
-            "Added role-based permissions and feature access rules to ensure proper visibility and secure usage across users",
-            "Improved release reliability by validating features in beta environments and adding unit and integration tests before production rollout",
+            "Investigated repo/reverse repo haircut exceptions using Pyrite, leveraging bespoke haircut grids and product-specific quantitative models; reduced false positives by 25%",
+            "Analyzed counterparty credit risk (CCR) and Potential Exposure (PE) using Credit Studio, isolating drivers across $50B+ notional",
+            "Resolved high-impact issues in collateral, funding, and triparty flows — improving exception closure efficiency by 30%",
+            "Utilized Bloomberg for trade enrichment and pricing validation; delivered clean, auditable exposure data for regulatory reviews",
         ],
     },
     {
         id: 2,
-        title: "Research Project Assistant",
-        company: "Stony Brook University",
-        location: "NY, USA",
-        period: "August 2024 – December 2024",
+        title: "Quantitative Research Analyst",
+        company: "Bellwether Consulting LLC",
+        location: "USA",
+        period: "May 2024 – January 2025",
         highlights: [
-            "Deployed a BERT Attention Visualizer to help researchers interpret transformer attention patterns at token level",
-            "Reduced latency by 20% by applying input-level caching with lru_cache and enabling response compression",
-            "Automated testing and versioned rollouts to enable faster and more stable production deployments",
-            "Achieved 99% uptime by containerizing services and setting up CI/CD with Vercel and Hugging Face Spaces",
+            "Developed optimal fund line-ups using multiple asset classes; conducted manager due diligence with risk & volatility, attribution, and scenario analysis",
+            "Designed alternate asset class investment strategy for a large financial client using return analysis, risk-return correlations, and stress testing",
+            "Built a comprehensive factor analysis tool in Python to understand key quantitative factors (Style, Size, Quality, Momentum, Volatility) behind fund performance",
+            "Collaborated with Senior Management to publish quarterly market recaps on US and International Markets",
         ],
     },
     {
         id: 3,
-        title: "Software Engineer Intern",
-        company: "DTPPL",
-        location: "Mumbai, India",
-        period: "June 2022 – July 2023",
+        title: "Senior Analyst, Risk Advisory",
+        company: "Deloitte Touche Tohmatsu India LLP",
+        location: "India",
+        period: "June 2022 – August 2023",
         highlights: [
-            "Reduced API latency by 15% by integrating Redis, redesigning RESTful endpoints, and optimizing database calls",
-            "Improved report generation by 40% by profiling and optimizing SQL joins, adding indexes, and removing subqueries",
-            "Built CI/CD pipelines using Jenkins and GitLab to enable consistent releases and faster rollback mechanisms",
-            "Streamlined backend performance in MIS system by eliminating bottlenecks in data-heavy routes and query layers",
+            "Identified, monitored, and evaluated operational, credit, and IT risks for third-party and financial audits",
+            "Led a team of 4 for the TCS-EW external audit, delivering the SOC2 report in a record 4 weeks",
+            "Facilitated financial risk management for TCS-BaNCS by reviewing internal controls over credit management, liquidity, and market risk",
+        ],
+    },
+    {
+        id: 4,
+        title: "Quantitative Risk Model Validation Analyst",
+        company: "Abhivridhi Capital Markets",
+        location: "India",
+        period: "June 2021 – May 2022",
+        highlights: [
+            "Validated market risk models for VaR calculations and trade selection, mitigating breaches under 18f-4 and FRTB regulatory frameworks",
+            "Created custom libraries for automated model validations for credit, market, and liquidity risk models integrated into data processing pipelines",
+            "Validated Credit Risk models using linear and logistic regression under CCAR, IFRS9, and CECL scenarios through Python",
+        ],
+    },
+    {
+        id: 5,
+        title: "Counterparty & Market Risk Analyst",
+        company: "MPG Associates",
+        location: "India",
+        period: "October 2020 – June 2021",
+        highlights: [
+            "Assessed Counterparty Risk through daily certification of metrics (CVaR and credit stress test) on market operations",
+            "Performed detailed risk analysis using portfolio VaR, sensitivities (delta, gamma, vega), margin requirements, and P&L across Equities, IR, Commodities, FX",
+            "Managed data quality issues by identifying model calculation bugs using Monte-Carlo methods and historical data analysis",
         ],
     },
 ];
@@ -123,49 +141,35 @@ export const experience = [
 export const projects = [
     {
         id: 1,
-        title: "DailyLog",
-        subtitle: "A Cloud-Native Personal Logging App",
-        description: "A secure and scalable cloud-native backend for personal journaling with zero-downtime deployments.",
+        title: "Stock Market Price Prediction",
+        subtitle: "Machine Learning & Technical Analysis",
+        description: "End-to-end stock price prediction system combining technical, statistical, and fundamental analysis with LSTM neural networks, deployed within Aishwarya Financial Services LLP.",
         highlights: [
-            "Provisioned AWS infrastructure using Terraform and Packer, deploying EC2, IAM roles, and network configurations",
-            "Implemented blue-green deployments using AWS Load Balancer, RDS, and CloudWatch alarms",
-            "Built RESTful APIs with Express.js to handle user authentication, journal entries, and file uploads",
-            "Reduced deployment time by 80% by automating pipelines through GitHub Actions and CI/CD",
+            "Achieved 70% accuracy in predicting future trends using LSTM alongside technical and fundamental analysis",
+            "Optimized the model to achieve a Sharpe ratio of 1.5 with a maximum drawdown of 8%, minimizing portfolio risks",
+            "Co-authored research titled 'Stock Price Prediction using LSTM' published in the Indian Journal of AI & Neural Networking",
         ],
-        tech: ["AWS", "Terraform", "Packer", "Express.js", "GitHub Actions", "RDS", "CloudWatch"],
-        color: "#22d3ee",
+        tech: ["Python", "LSTM", "Machine Learning", "Technical Analysis", "Sharpe Ratio", "Risk Optimization"],
+        color: "#D4A44C",
     },
     {
         id: 2,
-        title: "Sparrow-Health",
-        subtitle: "Telemedicine Platform",
-        description: "A secure telemedicine platform enabling real-time chat, video consultations, and appointment scheduling.",
+        title: "Credit Risk Modelling – TD Bank",
+        subtitle: "Merton Model Implementation",
+        description: "Built a comprehensive credit risk model for TD Bank using the Merton structural model, simulating asset value changes to estimate default probabilities.",
         highlights: [
-            "Built secure platform with JWT/OAuth2 authentication for real-time chat and video consultations",
-            "Improved MongoDB performance by 70% with Redis caching and optimized indexes for 15K+ concurrent users",
-            "Designed RESTful backend APIs using Express.js for users, appointments, messages, and medical records",
-            "Automated billing operations with modular Stripe integration for invoices, refunds, and secure payments",
+            "Estimated an 8% default probability by simulating asset value dynamics over time using the Merton model",
+            "Integrated balance sheet and market data with Python, improving default risk estimation accuracy by 15%",
+            "Applied quantitative analysis to predict potential default scenarios, reducing TD Bank's credit losses by 10%",
         ],
-        tech: ["MongoDB", "Redis", "Express.js", "JWT", "OAuth2", "Stripe", "WebSockets"],
-        color: "#a855f7",
-    },
-    {
-        id: 3,
-        title: "ShareEdu",
-        subtitle: "Learning Management System",
-        description: "A scalable LMS platform delivering uninterrupted access to learning tools for 10K+ students.",
-        highlights: [
-            "Built scalable LMS using MERN stack and microservices with AWS-based horizontal scaling",
-            "Improved responsiveness by 35% through CDN caching, real-time collaboration via WebSockets",
-            "Reduced AWS costs by 20% by deploying auto-scaling EC2 and optimizing S3 storage",
-        ],
-        tech: ["MERN Stack", "Microservices", "AWS", "WebSockets", "CDN", "S3", "EC2"],
-        color: "#ec4899",
+        tech: ["Python", "Merton Model", "Credit Risk", "Monte Carlo", "Balance Sheet Analysis", "Default Probability"],
+        color: "#34D399",
     },
 ];
 
 export const marqueeItems = [
-    "React", "Node.js", "TypeScript", "Python", "AWS", "Docker",
-    "MongoDB", "PostgreSQL", "Redis", "GraphQL", "WebSockets",
-    "Terraform", "CI/CD", "Express.js", "JavaScript", "Git"
+    "Python", "C++", "R", "MATLAB", "SQL", "VaR",
+    "Monte Carlo", "Derivatives", "Fixed Income", "Credit Risk",
+    "Stochastic Calculus", "Bloomberg", "Factor Analysis",
+    "Stress Testing", "CCAR", "FRTB",
 ];

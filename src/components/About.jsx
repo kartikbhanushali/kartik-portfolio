@@ -72,8 +72,26 @@ export default function About() {
             className="py-20 md:py-32 bg-dark-400 relative overflow-hidden"
         >
             {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-accent-cyan/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-accent-purple/5 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-accent-gold/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-accent-emerald/5 rounded-full blur-3xl" />
+
+            {/* Floating financial formulas */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {['dS = μSdt + σSdW', 'VaRₐ = -Φ⁻¹(α)σ√T', 'E[r] = rf + β(rm – rf)', 'Δ = ∂V/∂S', 'PD = N(-d₂)'].map((formula, i) => (
+                    <span
+                        key={i}
+                        className="absolute text-accent-gold/[0.04] font-mono text-xs md:text-sm select-none whitespace-nowrap"
+                        style={{
+                            top: `${15 + i * 18}%`,
+                            right: `${-5 + i * 3}%`,
+                            animation: `float-symbol ${10 + i * 2}s ease-in-out infinite`,
+                            animationDelay: `${i * 1.2}s`,
+                        }}
+                    >
+                        {formula}
+                    </span>
+                ))}
+            </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
@@ -85,9 +103,9 @@ export default function About() {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-4">
-                        About <span className="text-accent-cyan">Me</span>
+                        About <span className="text-accent-gold">Me</span>
                     </h2>
-                    <div className="w-20 h-1 bg-accent-cyan mx-auto" />
+                    <div className="w-20 h-1 bg-accent-gold mx-auto" />
                 </motion.div>
 
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -99,13 +117,13 @@ export default function About() {
                         >
                             {/* Profile image */}
                             <img
-                                src={`${process.env.PUBLIC_URL}/Harsh_Photo.jpeg`}
-                                alt="Harsh Ramani"
-                                className="w-full h-full object-cover"
+                                src={`${process.env.PUBLIC_URL}/DSC01279-gry.jpg`}
+                                alt="Kartik Bhanushali"
+                                className="w-full h-full object-cover object-top"
                             />
 
                             {/* Decorative border */}
-                            <div className="absolute inset-0 border-2 border-accent-cyan/30 rounded-2xl transform translate-x-4 translate-y-4 -z-10" />
+                            <div className="absolute inset-0 border-2 border-accent-gold/30 rounded-2xl transform translate-x-4 translate-y-4 -z-10" />
                         </div>
                     </div>
 
@@ -118,7 +136,7 @@ export default function About() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            <div className="flex items-center gap-2 text-accent-cyan">
+                            <div className="flex items-center gap-2 text-accent-gold">
                                 <FaMapMarkerAlt />
                                 <span className="font-medium">{personalInfo.location}</span>
                             </div>
@@ -126,29 +144,29 @@ export default function About() {
                             <p className="text-gray-300 text-lg leading-relaxed min-h-[150px]">
                                 {displayBio}
                                 {!bioComplete && (
-                                    <span className="inline-block w-0.5 h-5 bg-accent-cyan ml-1 animate-pulse" />
+                                    <span className="inline-block w-0.5 h-5 bg-accent-gold ml-1 animate-pulse" />
                                 )}
                             </p>
 
                             {/* Education Cards */}
                             <div className="space-y-4 mt-8">
                                 <h3 className="text-xl font-display font-semibold text-white flex items-center gap-2">
-                                    <FaGraduationCap className="text-accent-cyan" />
+                                    <FaGraduationCap className="text-accent-gold" />
                                     Education
                                 </h3>
 
                                 {education.map((edu, index) => (
                                     <motion.div
                                         key={index}
-                                        className="p-4 bg-dark-300/50 rounded-xl border border-dark-200/20 hover:border-accent-cyan/30 transition-colors"
+                                        className="p-4 bg-dark-300/50 rounded-xl border border-dark-200/20 hover:border-accent-gold/30 transition-colors"
                                         initial={{ opacity: 0, y: 20 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
                                     >
                                         <h4 className="font-semibold text-white">{edu.degree}</h4>
-                                        <p className="text-accent-cyan text-sm">{edu.school}</p>
-                                        <p className="text-gray-500 text-sm">{edu.period}</p>
+                                        <p className="text-accent-gold text-sm">{edu.school}</p>
+                                        <p className="text-gray-500 text-sm">{edu.period}{edu.gpa ? ` • GPA: ${edu.gpa}` : ''}</p>
                                         <div className="flex flex-wrap gap-2 mt-2">
                                             {edu.coursework.slice(0, 3).map((course, i) => (
                                                 <span
